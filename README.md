@@ -17,8 +17,6 @@ To run this code locally, you will need to have a code editor installed on your 
 
 2. Navigate to the project directory using the command line or terminal<br />
 
-3. Open the `index.html` file in your web browser to view the project
-
 ## Tech Stack
 
 This project was built using the following tech stack:
