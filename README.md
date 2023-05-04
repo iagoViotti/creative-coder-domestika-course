@@ -32,5 +32,6 @@ This project was built using the following tech stack:
 Here are a few screenshots of some of the projects I have created (so far) during the course:
 
 ![Screenshot](/screenshots/canva1.jpeg)
+![Screenshot](/screenshots/canva2.jpeg)
 
 Thank you for visiting this repository and following along with my progress in the Creative Coder in Javascript course.
