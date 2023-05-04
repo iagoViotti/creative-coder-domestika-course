@@ -35,7 +35,7 @@ Here are a few screenshots of some of the projects I have created (so far) durin
   <img height="200" src="/screenshots/canva1.jpeg"  />
   <img height="200" src="/screenshots/canva2.jpeg"  />
   <img height="200" src="/sketches/output/01/2023.05.04-02.58.36.png"  />
-  <img height="200" src="/sketches/output/01/2023.05.04-02.58.36.png"  />
+  <img height="200" src="/sketches/output/01/2023.05.04-02.59.28.png"  />
 </div>
 
 
