@@ -17,8 +17,6 @@ To run this code locally, you will need to have a code editor installed on your 
 
 2. Navigate to the project directory using the command line or terminal<br />
 
-3. Open the `index.html` file in your web browser to view the project
-
 ## Tech Stack
 
 This project was built using the following tech stack:
@@ -35,7 +33,7 @@ Here are a few screenshots of some of the projects I have created (so far) durin
   <img height="200" src="/screenshots/canva1.jpeg"  />
   <img height="200" src="/screenshots/canva2.jpeg"  />
   <img height="200" src="/sketches/output/01/2023.05.04-02.58.36.png"  />
-  <img height="200" src="/sketches/output/01/2023.05.04-02.58.36.png"  />
+  <img height="200" src="/sketches/output/01/2023.05.04-02.59.28.png"  />
 </div>
 
 
