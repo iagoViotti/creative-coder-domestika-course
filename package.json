@@ -1,0 +1,17 @@
+{
+  "name": "creative-coder-domestika-course",
+  "version": "1.0.0",
+  "description": "This repository serves as a tracking tool for my progress in the Domestike Creative Coder. The course focuses on using HTML, CSS, and Javascript to create interactive and visually engaging web applications.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "canvas-sketch": "^0.7.7",
+    "canvas-sketch-util": "^1.10.0",
+    "tweakpane": "^3.0.1"
+  }
+}
