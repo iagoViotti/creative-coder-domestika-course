@@ -11,7 +11,8 @@ const settings = {
 const params = {
   cols: 10,
   rows: 10,
-  lockProportion: false,
+  strokeStyle: {r: 0, g: 0, b: 0, a: 0},
+  background: {r: 230, g: 230, b: 230, a: 1},
   scaleMin: 1,
   scaleMax: 30,
   freq: 0.001,
@@ -25,7 +26,7 @@ const params = {
 
 const sketch = () => {
   return ({ context, width, height, frame }) => {
-    context.fillStyle = 'hsl(0, 0%, 90%)';
+    context.fillStyle = `rgba(${params.background.r}, ${params.background.g}, ${params.background.b}, ${params.background.a})`;
     context.fillRect(0, 0, width, height);
 
     const cols = params.cols;
@@ -59,8 +60,8 @@ const sketch = () => {
         -1, 1, params.scaleMin, params.scaleMax);
 
       context.lineWidth = 5;
-      context.strokeStyle = 'white';
-
+      context.strokeStyle = `rgba(${params.strokeStyle.r}, ${params.strokeStyle.g}, ${params.strokeStyle.b}, ${params.strokeStyle.a}`;
+      
       context.save()
 
       context.translate(x, y);
@@ -86,6 +87,8 @@ const createPane = () => {
   folder.addInput(params, 'rows', { min: 2, max: 40, step: 1 });
   folder.addInput(params, 'scaleMin', { min: 1, max: 100 });
   folder.addInput(params, 'scaleMax', { min: 1, max: 100 });
+  folder.addInput(params, 'strokeStyle');
+  folder.addInput(params, 'background')
 
   folder = pane.addFolder({ title: 'Noise' });
   folder.addInput(params, 'noiseType', { options: { '2D': '2D', '3D': '3D' } });
