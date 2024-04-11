@@ -20,7 +20,7 @@ const settings = {
 const sketch = ({ context, width, height }) => {
   const agents = [];
 
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 50; i++) {
     const x = random.range(0, width);
     const y = random.range(0, height);
     agents.push(new Agent(x, y));
