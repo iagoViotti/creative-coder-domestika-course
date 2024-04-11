@@ -36,6 +36,7 @@ Here are a few screenshots of some of the projects I have created (so far) durin
   <img height="200" src="/sketches/output/01/2023.05.04-02.59.28.png"  />
   <img height="200" src="/sketches/output/02/2023.05.04-23.27.35.png"  />
   <img height="200" src="/sketches/output/02/2023.05.10-16.37.20.png"  />
+  <img height="200" src="/output-recap-stream/2024.04.11-17.39.36.gif"  />
 </div>
 
 
