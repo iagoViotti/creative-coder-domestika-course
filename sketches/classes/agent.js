@@ -1,4 +1,4 @@
-import { Vector } from './point';
+import { Vector } from './Vector.js';
 const random = require('canvas-sketch-util/random');
 
 export class Agent {
