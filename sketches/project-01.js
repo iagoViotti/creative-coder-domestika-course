@@ -1,7 +1,7 @@
 const canvasSketch = require('canvas-sketch');
 const random = require('canvas-sketch-util/random');
 const math = require('canvas-sketch-util/math');
-// const Tweakpane = require('tweakpane');
+const Tweakpane = require('tweakpane');
 import { Dot } from './classes/dot.js';
 import { Vector } from './classes/Vector.js';
 
@@ -11,26 +11,32 @@ const settings = {
 };
 
 const params = {
-  cols: 20,
-  rows: 15,
+  cols: 31,
+  rows: 22,
   scaleMin: 1,
   scaleMax: 30,
-  freq: 0.001,
-  amp: 0.2,
-  frame: 0,
+  freq: 0.004,
   animate: true,
-  lineCap: 'butt',
+  BGColor: { r: 255, g: 255, b: 255 },
 }
 
 const sketch = () => {
-  let mouse = new Vector(0, 0);
-  const agents = [];
+  let mouse = {
+    position: new Vector(0, 0),
+    isAnimating: false,
+    lastMoveTime: Date.now(),
+    click: false,
+  }
+
   window.addEventListener('mousemove', (event) => {
-    mouse = new Vector(event.clientX, event.clientY);
+    mouse.position = new Vector(event.clientX, event.clientY);
+    mouse.isAnimating = true;
+    mouse.lastMoveTime = Date.now();
   });
 
+  const agents = [];
   return ({ context, width, height, frame }) => {
-    context.fillStyle = 'white';
+    context.fillStyle = `rgb(${params.BGColor.r}, ${params.BGColor.g}, ${params.BGColor.b})`;
     context.fillRect(0, 0, width, height);
 
     const cols = params.cols;
@@ -50,40 +56,44 @@ const sketch = () => {
       const x = col * cellw;
       const y = row * cellh;
       const f = params.animate ? frame : params.frame
+  
       const noise2D = random.noise2D(x + (f * 10), y, params.freq);
       const noise3D = random.noise3D(x, y, f * 10, params.freq)
       // const scale = (noise + 1) / 2 * 20;
 
-      
       const translateX = x + margx + cellw * 0.5;
       const translateY = y + margy + cellh * 0.5;
       agents.push(new Dot(x, y)
-      .setRadius(3)
-      .setColor('red')
-      .mousePull(mouse, translateX, translateY)
-      .draw(context, translateX, translateY)
-    );
+        .setRadius(20)
+        .setColor('red')
+        .setBGColor('red')
+        .mousePull(mouse, translateX, translateY, noise2D)
+        .draw(context, translateX, translateY, cellw)
+      );
     }
   };
 };
 
-// const createPane = () => {
-//   const pane = new Tweakpane.Pane();
-//   let folder
-//   folder = pane.addFolder({ title: 'Grid' });
-//   folder.addInput(params, 'lineCap', { options: {butt: 'butt', round: 'round', square: 'square'}})
-//   folder.addInput(params, 'cols', { min: 2, max: 50, step: 1 });
-//   folder.addInput(params, 'rows', { min: 2, max: 50, step: 1 });
-//   folder.addInput(params, 'scaleMin', { min: 1, max: 100 });
-//   folder.addInput(params, 'scaleMax', { min: 1, max: 100 });
+const createPane = () => {
+  const pane = new Tweakpane.Pane();
+  let folder
+  folder = pane.addFolder({ title: 'Grid' });
+  // folder.addInput(params, 'lineCap', { options: {butt: 'butt', round: 'round', square: 'square'}})
+  folder.addInput(params, 'cols', { min: 2, max: 50, step: 1 });
+  folder.addInput(params, 'rows', { min: 2, max: 50, step: 1 });
+  // folder.addInput(params, 'scaleMin', { min: 1, max: 100 });
+  // folder.addInput(params, 'scaleMax', { min: 1, max: 100 });
 
-//   folder = pane.addFolder({ title: 'Noise' });
-//   folder.addInput(params, 'freq', { min: -0.01, max: 0.01 });
-//   folder.addInput(params, 'amp', { min: 0, max: 1 });
-//   folder.addInput(params, 'frame', { min: 0, max: 999 })
-//   folder.addInput(params, 'animate')
-// }
+  folder = pane.addFolder({ title: 'Noise' });
+  folder.addInput(params, 'freq', { min: -0.01, max: 0.01 });
+  // folder.addInput(params, 'amp', { min: 0, max: 1 });
+  // folder.addInput(params, 'frame', { min: 0, max: 999 })
+  // folder.addInput(params, 'animate')
+  folder = pane.addFolder({ title: 'Colouring' });
+  folder.addInput(params, 'BGColor', { input: 'color' });
 
-// createPane();
+}
+
+createPane();
 canvasSketch(sketch, settings);
 
