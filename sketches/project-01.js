@@ -1,9 +1,9 @@
-const canvasSketch = require('canvas-sketch');
-const random = require('canvas-sketch-util/random');
-const math = require('canvas-sketch-util/math');
-const Tweakpane = require('tweakpane');
+import canvasSketch from 'canvas-sketch';
+import { random } from 'canvas-sketch-util';
+import Tweakpane from 'tweakpane';
 import { Dot } from './classes/dot.js';
 import { Vector } from './classes/Vector.js';
+import { Cursor } from './classes/cursor.js';
 
 const settings = {
   dimensions: [window.innerWidth, window.innerHeight],
@@ -13,27 +13,29 @@ const settings = {
 const params = {
   cols: 31,
   rows: 22,
-  scaleMin: 1,
-  scaleMax: 30,
-  freq: 0.004,
+  freq: 0.005,
   animate: true,
   BGColor: { r: 255, g: 255, b: 255 },
 }
 
-const sketch = () => {
-  let mouse = {
-    position: new Vector(0, 0),
-    isAnimating: false,
-    lastMoveTime: Date.now(),
-    click: false,
+const mouse = new Cursor(0, 0);
+
+window.addEventListener('mousemove', (event) => {
+  // mouse.pos = new Vector(event.clientX, event.clientY);
+  // mouse.animating = true;
+  // mouse.lastMoveTime = Date.now();
+
+  //less memory costing method
+  const now = Date.now();
+  // Limit the event processing to approximately 60 FPS
+  if (now - mouse.lastMoveTime > 16) { 
+    mouse.pos = new Vector(event.clientX, event.clientY);
+    mouse.animating = true;
+    mouse.lastMoveTime = now;
   }
+});
 
-  window.addEventListener('mousemove', (event) => {
-    mouse.position = new Vector(event.clientX, event.clientY);
-    mouse.isAnimating = true;
-    mouse.lastMoveTime = Date.now();
-  });
-
+const sketch = () => {
   const agents = [];
   return ({ context, width, height, frame }) => {
     context.fillStyle = `rgb(${params.BGColor.r}, ${params.BGColor.g}, ${params.BGColor.b})`;
@@ -56,7 +58,7 @@ const sketch = () => {
       const x = col * cellw;
       const y = row * cellh;
       const f = params.animate ? frame : params.frame
-  
+
       const noise2D = random.noise2D(x + (f * 10), y, params.freq);
       const noise3D = random.noise3D(x, y, f * 10, params.freq)
       // const scale = (noise + 1) / 2 * 20;
@@ -65,9 +67,9 @@ const sketch = () => {
       const translateY = y + margy + cellh * 0.5;
       agents.push(new Dot(x, y)
         .setRadius(20)
-        .setColor('red')
-        .setBGColor('red')
-        .mousePull(mouse, translateX, translateY, noise2D)
+        .setColor('hotpink')
+        .setBGColor('hotpink')
+        .mousePull(mouse, translateX, translateY, noise3D)
         .draw(context, translateX, translateY, cellw)
       );
     }
@@ -93,6 +95,7 @@ const createPane = () => {
   folder.addInput(params, 'BGColor', { input: 'color' });
 
 }
+
 
 createPane();
 canvasSketch(sketch, settings);

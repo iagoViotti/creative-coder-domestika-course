@@ -1,4 +1,5 @@
-const canvasSketch = require('canvas-sketch');
+// const canvasSketch = require('canvas-sketch');
+import canvasSketch from 'canvas-sketch';
 const { math, random } = require('canvas-sketch-util');
 
 const settings = {

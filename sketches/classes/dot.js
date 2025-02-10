@@ -59,7 +59,7 @@ export class Dot {
 
   mousePull(mouse, translateX, translateY, noise) {
     const maxRange = 250;
-    const distance = mouse.position.getDistance(new Vector(translateX, translateY));
+    const distance = mouse.pos.getDistance(new Vector(translateX, translateY));
 
     if (distance < (maxRange + (noise * 10))) {
       this.radius = math.mapRange(distance, 0, maxRange, 1, this.radius);
@@ -73,7 +73,7 @@ export class Dot {
   }
 
   wiggle(noise) {
-    this.radius = this.radius + noise;
+    this.radius = this.radius + (noise);
     this.color = color.offsetHSL(this.color, noise * 10, 0, 0).hex;
     return this;
   }
