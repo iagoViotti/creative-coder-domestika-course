@@ -1,8 +1,14 @@
-const canvasSketch = require('canvas-sketch');
-const random = require('canvas-sketch-util/random');
-const math = require('canvas-sketch-util/math');
-const Tweakpane = require('tweakpane');
-const { color } = require('canvas-sketch-util');
+// const canvasSketch = require('canvas-sketch');
+// const random = require('canvas-sketch-util/random');
+// const math = require('canvas-sketch-util/math');
+// const Tweakpane = require('tweakpane');
+// const { color } = require('canvas-sketch-util');
+// new imports
+import canvasSketch from 'canvas-sketch';
+import { random, math } from 'canvas-sketch-util';
+import { color } from 'canvas-sketch-util';
+import {Pane} from 'tweakpane';
+
 
 const settings = {
   dimensions: [window.innerWidth, window.innerHeight],
@@ -85,7 +91,7 @@ window.addEventListener('wheel', (e) => {
 });
 
 const createPane = () => {
-  const pane = new Tweakpane.Pane();
+  const pane = new Pane();
   let folder
   folder = pane.addFolder({ title: 'Grid' });
   folder.addInput(params, 'cols', { min: 50, max: 250, step: 1 });

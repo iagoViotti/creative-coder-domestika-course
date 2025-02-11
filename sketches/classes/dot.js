@@ -58,7 +58,7 @@ export class Dot {
   // }
 
   mousePull(mouse, translateX, translateY, noise) {
-    const maxRange = 250;
+    const maxRange = 350;
     const distance = mouse.pos.getDistance(new Vector(translateX, translateY));
 
     if (distance < (maxRange + (noise * 10))) {

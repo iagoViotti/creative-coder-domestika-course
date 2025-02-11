@@ -1,18 +1,19 @@
 import canvasSketch from 'canvas-sketch';
 import { random } from 'canvas-sketch-util';
-import Tweakpane from 'tweakpane';
+// import Tweakpane from 'tweakpane';
+import {Pane} from 'tweakpane';
 import { Dot } from './classes/dot.js';
 import { Vector } from './classes/Vector.js';
 import { Cursor } from './classes/cursor.js';
 
 const settings = {
-  dimensions: [window.innerWidth, window.innerHeight],
+  // dimensions: [window.innerWidth, window.innerHeight],
   animate: true,
 };
 
 const params = {
-  cols: 31,
-  rows: 22,
+  cols: 28,
+  rows: 14,
   freq: 0.005,
   animate: true,
   BGColor: { r: 255, g: 255, b: 255 },
@@ -77,7 +78,8 @@ const sketch = () => {
 };
 
 const createPane = () => {
-  const pane = new Tweakpane.Pane();
+  // const pane = new Tweakpane.Pane();
+  const pane = new Pane();
   let folder
   folder = pane.addFolder({ title: 'Grid' });
   // folder.addInput(params, 'lineCap', { options: {butt: 'butt', round: 'round', square: 'square'}})

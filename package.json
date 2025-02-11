@@ -4,7 +4,8 @@
   "description": "This repository serves as a tracking tool for my progress in the Domestike Creative Coder. The course focuses on using HTML, CSS, and Javascript to create interactive and visually engaging web applications.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite"
   },
   "keywords": [],
   "author": "",
@@ -13,5 +14,8 @@
     "canvas-sketch": "^0.7.7",
     "canvas-sketch-util": "^1.10.0",
     "tweakpane": "^3.0.1"
+  },
+  "devDependencies": {
+    "vite": "^6.1.0"
   }
 }

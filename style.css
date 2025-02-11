@@ -1,0 +1,87 @@
+/* import font from public folder */
+@font-face {
+  font-family: 'monospace';
+  src: url('/fonts/DeValencia') format('truetype');
+}
+
+body {
+  /* font-family: 'Arial', sans-serif; */
+  font-family: DeValencia, monospace;
+  /* font-family: 'Courier New', Courier, monospace; */
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+header {
+  color: #9b9b9b;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+}
+
+h1 {
+  font-size: 9em;
+  margin: 1rem 1rem;
+  letter-spacing: -0.1em;
+}
+
+p {
+  font-size: 1.1em;
+  margin: 3rem 1rem;
+  color: #363636;
+  max-width: 50%;
+}
+
+p a {
+  color: #ff7575;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+
+main {
+  display: flex;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0 0.5em;
+}
+
+li {
+  padding: 1em;
+  padding-left: 1.5em;
+  font-size: 1.5em;
+  position: relative;
+}
+
+li a {
+  color: #333;
+  text-decoration: none;
+}
+
+li a:hover {
+  color: #ff7575;
+}
+
+li a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 1em;
+  height: 1em;
+  background-image: url('arrow-svg.svg'); 
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: green;
+}
