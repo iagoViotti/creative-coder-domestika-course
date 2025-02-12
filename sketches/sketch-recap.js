@@ -1,7 +1,11 @@
-const canvasSketch = require('canvas-sketch');
-const random = require('canvas-sketch-util/random');
-const math = require('canvas-sketch-util/math');
-const Tweakpane = require('tweakpane');
+// const canvasSketch = require('canvas-sketch');
+// const random = require('canvas-sketch-util/random');
+// const math = require('canvas-sketch-util/math');
+// const Tweakpane = require('tweakpane');
+
+import canvasSketch from 'canvas-sketch';
+import { random, math } from 'canvas-sketch-util';
+import { Pane } from 'tweakpane';
 
 const settings = {
   dimensions: [1080, 1080],
@@ -9,8 +13,8 @@ const settings = {
 };
 
 const params = {
-  cols: 10,
-  rows: 10,
+  cols: 21,
+  rows: 21,
   strokeStyle: {r: 0, g: 0, b: 0, a: 0},
   background: {r: 230, g: 230, b: 230, a: 1},
   scaleMin: 1,
@@ -80,7 +84,7 @@ const sketch = () => {
   };
 };
 const createPane = () => {
-  const pane = new Tweakpane.Pane();
+  const pane = new Pane();
   let folder
   folder = pane.addFolder({ title: 'Grid' });
   folder.addInput(params, 'cols', { min: 2, max: 40, step: 1 });
