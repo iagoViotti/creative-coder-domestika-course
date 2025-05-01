@@ -40,6 +40,8 @@ Here are a few screenshots of some of the projects I have created (so far) durin
   <img height="200" src="/output-recap-stream/2024.04.11-17.39.36.gif"  />
 </div>
 
+### Live Demo
 
+You can also see a few of them in this [link]([https://creative-coder-iota.vercel.app/])
 
 Thank you for visiting this repository and following along with my progress in the Creative Coder in Javascript course.
